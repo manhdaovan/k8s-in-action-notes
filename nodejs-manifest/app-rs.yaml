@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nodejs-app-rs
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - nodejs-app-rs
+  template:
+    metadata:
+      labels:
+        app: nodejs-app-rs
+    spec:
+      containers:
+      - name: nodejs-app-rs
+        image: manhdaovan/nodejs-sample-app
