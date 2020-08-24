@@ -15,4 +15,7 @@ spec:
       - name: nodejs-app
         image: manhdaovan/nodejs-sample-app
         ports:
-        - containerPort: 8080
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
