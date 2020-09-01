@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nodejs-ingress-tls
+spec:
+  tls:
+  - hosts:
+    - nodejs.example.com
+    secretName: tls-secret
+  rules:
+  - host: nodejs.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nodejs-nodeport
+          servicePort: 80
