@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-cm
+spec:
+  containers:
+  - image: mongo
+    name: mongodb
+    env:
+    - name: ENV_NAME_HERE
+      valueFrom:
+        configMapKeyRef:
+          name: configmap-name-here
+          key: key-name
