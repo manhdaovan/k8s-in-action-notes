@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-cm-volume-single-file
+spec:
+  containers:
+  - image: mongo
+    name: mongodb
+    volumeMounts:
+    - name: myvolume
+      mountPath: /etc/someconfig.conf # target file on Pod
+      subPath: myconfig.conf # file (entry) of CM
+  volumes:
+  - name: myvolume
+    configMap:
+      name: fortune-config
+      items:
+      - key: nginx.conf
+        path: myconfig.conf
